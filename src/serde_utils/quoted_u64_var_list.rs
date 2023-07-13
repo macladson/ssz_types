@@ -37,16 +37,17 @@ where
     }
 }
 
-pub fn serialize<'a, C, I, S>(value: &'a C, serializer: S) -> Result<S::Ok, S::Error>
+pub fn serialize<'a, T, C, I, S>(value: &'a C, serializer: S) -> Result<S::Ok, S::Error>
 where
     S: Serializer,
+    T: AsRef<u64>,
     &'a C: IntoIterator<IntoIter = I>,
-    I: Iterator<Item = &'a u64> + ExactSizeIterator,
+    I: Iterator<Item = T> + ExactSizeIterator,
 {
     let iter = value.into_iter();
     let mut seq = serializer.serialize_seq(Some(iter.len()))?;
-    for &int in iter {
-        seq.serialize_element(&QuotedIntWrapper { int })?;
+    for int in iter {
+        seq.serialize_element(&QuotedIntWrapper { int: *int.as_ref() })?;
     }
     seq.end()
 }
