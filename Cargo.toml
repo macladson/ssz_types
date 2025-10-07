@@ -9,6 +9,7 @@ repository = "https://github.com/sigp/ssz_types"
 documentation = "https://docs.rs/ssz_types"
 keywords = ["ethereum"]
 categories = ["cryptography::cryptocurrencies"]
+rust-version = "1.87.0"
 
 [dependencies]
 tree_hash = { version = "0.11.0", default-features = false }
@@ -17,7 +18,6 @@ ethereum_ssz = "0.9.0"
 serde = "1.0.0"
 serde_derive = "1.0.0"
 typenum = "1.12.0"
-smallvec = "1.8.0"
 arbitrary = { version = "1.0", features = ["derive"], optional = true }
 itertools = "0.14.0"
 

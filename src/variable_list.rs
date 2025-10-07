@@ -124,7 +124,7 @@ impl<T, N: Unsigned> VariableList<T, N> {
 
     /// True if `self` does not contain any values.
     pub fn is_empty(&self) -> bool {
-        self.len() == 0
+        self.vec.is_empty()
     }
 
     /// Returns the type-level maximum length.

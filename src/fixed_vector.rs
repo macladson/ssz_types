@@ -107,7 +107,7 @@ impl<T, N: Unsigned> FixedVector<T, N> {
 
     /// True if the type-level constant length of `self` is zero.
     pub fn is_empty(&self) -> bool {
-        self.len() == 0
+        self.vec.is_empty()
     }
 
     /// Returns the type-level constant length.
